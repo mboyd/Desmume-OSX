@@ -1,0 +1,152 @@
+// !$*UTF8*$!
+{
+	1EFD51770F892B1A00B029BB /* DeSmuME_gdbstub */ = {
+		activeExec = 0;
+		executables = (
+			22DDF824132CAE8700870D32 /* DeSmuME_gdbstub */,
+		);
+	};
+	22DDF823132CAE8700870D32 /* DeSmuME */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = DeSmuME;
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	22DDF824132CAE8700870D32 /* DeSmuME_gdbstub */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = DeSmuME_gdbstub;
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	22DDF835132CAEAB00870D32 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	22DDF836132CAEAB00870D32 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	22DDF839132CAF0D00870D32 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Confused by earlier errors, bailing out";
+		fRef = 729BEC620D9D55DB00ED561B /* main_window.mm */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 611;
+		rType = 1;
+	};
+	22DDF83A132CAF0D00870D32 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 729BEC620D9D55DB00ED561B /* main_window.mm */;
+		name = "main_window.mm: 612";
+		rLen = 0;
+		rLoc = 17210;
+		rType = 0;
+		vrLen = 795;
+		vrLoc = 16940;
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 22DDF823132CAE8700870D32 /* DeSmuME */;
+		activeTarget = 8D1107260486CEB800E47090 /* DeSmuME */;
+		codeSenseManager = 22DDF836132CAEAB00870D32 /* Code sense */;
+		executables = (
+			22DDF823132CAE8700870D32 /* DeSmuME */,
+			22DDF824132CAE8700870D32 /* DeSmuME_gdbstub */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					558,
+					20,
+					48.16259765625,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 321695367;
+			PBXWorkspaceStateSaveDate = 321695367;
+		};
+		perUserProjectItems = {
+			22DDF839132CAF0D00870D32 /* XCBuildMessageTextBookmark */ = 22DDF839132CAF0D00870D32 /* XCBuildMessageTextBookmark */;
+			22DDF83A132CAF0D00870D32 /* PBXTextBookmark */ = 22DDF83A132CAF0D00870D32 /* PBXTextBookmark */;
+		};
+		sourceControlManager = 22DDF835132CAEAB00870D32 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	729BEC620D9D55DB00ED561B /* main_window.mm */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1379, 17225}}";
+			sepNavSelRange = "{17210, 0}";
+			sepNavVisRange = "{17049, 1248}";
+		};
+	};
+	8D1107260486CEB800E47090 /* DeSmuME */ = {
+		activeExec = 0;
+		executables = (
+			22DDF823132CAE8700870D32 /* DeSmuME */,
+		);
+	};
+}

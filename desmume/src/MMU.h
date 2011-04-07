@@ -20,6 +20,10 @@
 #ifndef MMU_H
 #define MMU_H
 
+#ifdef check
+#undef check
+#endif
+
 #include "FIFO.h"
 #include "mem.h"
 #include "registers.h"

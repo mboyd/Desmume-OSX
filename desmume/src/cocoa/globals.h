@@ -34,7 +34,7 @@ typedef int NSInteger;
 typedef unsigned int NSUInteger;
 #endif
 
-typedef float CGFloat;
+//typedef float CGFloat;
 
 #ifdef __cplusplus
 }

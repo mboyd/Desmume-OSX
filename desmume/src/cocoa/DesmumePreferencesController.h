@@ -45,6 +45,52 @@
 #define PREF_KEY_START @"Start Button"
 #define PREF_KEY_SELECT @"Select Button"
 
-void setAppDefaults(); //this is defined in preferences.m and should be called at app launch
+#define UTF8_RETURN ((unichar)13L)
+#define UTF8_RIGHT ((unichar)63235L)
+#define UTF8_LEFT ((unichar)63234L)
+#define UTF8_UP ((unichar)63232L)
+#define UTF8_DOWN ((unichar)63233L)
 
-NSView *createPreferencesView(NSString *helpinfo, NSDictionary *options, id delegate); //utility func for creating a preference panel with a set of options
+@interface DesmumePreferencesController : NSObject <NSWindowDelegate>
+{
+	IBOutlet NSWindow *window;
+    IBOutlet NSToolbar *toolbar;
+    IBOutlet NSView *pref_view;
+	
+    IBOutlet NSToolbarItem *interface;
+	IBOutlet NSView *interface_view;
+	
+    IBOutlet NSToolbarItem *controls;
+	IBOutlet NSView *controls_view;
+	
+    IBOutlet NSToolbarItem *ds_firmware;
+	IBOutlet NSView *firmware_view;
+    
+    NSView *current_view;
+    
+    @private
+    NSString *k_return, *k_right, *k_left, *k_up, *k_down;
+}
+
+//preferences
++ (void)setAppDefaults;
+
+- (void)awakeFromNib;
+
+- (IBAction)showInterfacePreferences:(id)sender;
+- (IBAction)showControlsPreferences:(id)sender;
+
+- (void)showPreferencesView:(NSView*)view;
+
+- (void)windowWillClose:(NSNotification *)notification;
+
+@end
+
+@interface KeyboardValueTransformer : NSValueTransformer
+{}
+
++ (Class) transformedValueClass;
++ (BOOL) allowsReverseTransformation;
+
+- (id) transformedValue:(id)value;
+@end

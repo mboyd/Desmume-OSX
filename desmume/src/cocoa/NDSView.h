@@ -17,25 +17,17 @@
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-#import "nds_control.h"
+#import "NintendoDS.h"
 
 //This class uses OpenGL for drawing for speed
-//if opengl is not available it uses NSImage
 
 @class ScreenState;
 
-@interface VideoOutputView :
-#ifdef HAVE_OPENGL
-NSView
-#else
-NSImageView
-#endif
+@interface NDSView :NSOpenGLView
 {
-#ifdef HAVE_OPENGL
-	NSOpenGLContext* context;
-#endif
 	ScreenState *screen_buffer;
 }
+
 //init
 - (id)initWithFrame:(NSRect)frame;
 

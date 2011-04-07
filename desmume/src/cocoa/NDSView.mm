@@ -17,31 +17,43 @@
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-#import "video_output_view.h"
+#import "NDSView.h"
 #import "screen_state.h"
 
 #define HORIZONTAL(angle) ((angle) == -90 || (angle) == -270)
 #define VERTICAL(angle) ((angle) == 0 || (angle) == -180)
 
-#ifdef HAVE_OPENGL
 #import <OpenGL/gl.h>
-#endif
 
-#ifdef HAVE_OPENGL
 //screenstate extended to hold rotated copies
 @interface ScreenState(extended)
 - (void)rotateTo90;
 - (void)rotateTo0;
 @end
-#endif
 
-@implementation VideoOutputView
+@implementation NDSView
 
 - (id)initWithFrame:(NSRect)frame
 {
-	//Initialize the view------------------------------------------------------------------
+    //Create the pixel format for our video output view
+    NSOpenGLPixelFormatAttribute attrs[] =
+    {
+        //NSOpenGLPFAFullScreen,
+        NSOpenGLPFAWindow, //need a renderer that can draw to a window
+        //NSOpenGLPFARendererID, some_number, //this picks a particular renderer, for testing
+        (NSOpenGLPixelFormatAttribute)0
+    };
+    
+    NSOpenGLPixelFormat* pixel_format = [[NSOpenGLPixelFormat alloc] initWithAttributes:attrs];
+    if(pixel_format == nil)
+    {
+        messageDialog(NSLocalizedString(@"Error", nil), @"Couldn't create OpenGL pixel format for video output");
+        return nil;
+    }
 
-	self = [super initWithFrame:frame];
+	self = [super initWithFrame:frame pixelFormat:pixel_format];
+    
+    [pixel_format release];
 
 	if(self==nil)
 	{
@@ -49,62 +61,38 @@
 		return nil;
 	}
 
-	screen_buffer = nil;
-
-	//Initialize image view if for displaying the screen ----------------------------------------
-#ifndef HAVE_OPENGL
-	[self setImageFrameStyle: NSImageFrameNone];
-	[self setImageScaling:NSScaleToFit];
-	[self setEditable:NO];
-	[self setEnabled:NO];
-
-	//Initialize the OpenGL context for displaying the screen -----------------------------------
-#else
-	//Create the pixel format for our video output view
-	NSOpenGLPixelFormatAttribute attrs[] =
-	{
-		//NSOpenGLPFAFullScreen,
-		NSOpenGLPFAWindow, //need a renderer that can draw to a window
-		//NSOpenGLPFARendererID, some_number, //this picks a particular renderer, for testing
-		(NSOpenGLPixelFormatAttribute)0
-	};
-
-	NSOpenGLPixelFormat* pixel_format = [[NSOpenGLPixelFormat alloc] initWithAttributes:attrs];
-	if(pixel_format == nil)
-	{
-		messageDialog(NSLocalizedString(@"Error", nil), @"Couldn't create OpenGL pixel format for video output");
-		context = nil;
-		[self release];
-		return nil;
-	} else
-	{
-
-		context = [[NSOpenGLContext alloc] initWithFormat:pixel_format shareContext:nil];
-		[pixel_format release];
-		if(context == nil)
-		{
-			messageDialog(NSLocalizedString(@"Error", nil), @"Couldn't create OpenGL context for video output");
-			[self release];
-			return nil;
-		}
-	}
-
-	//init gl for drawing
-	[self setFrame:frame];
-	[self setBoundsRotation:0];
-#endif
-
 	//init screen buffer
 	[self setScreenState:[ScreenState blackScreenState]];
+    
+    //setup bounds
+    [self setFrame:frame];
 
 	return self;
 }
 
+- (void)drawRect:(NSRect)bounds
+{
+	if(screen_buffer == nil)
+        return; //simply dont draw anything if we dont have a screen data object allocated
+    
+    
+	[[self openGLContext] makeCurrentContext];
+    
+	if([self boundsRotation] == 0 || [self boundsRotation] == -180)
+	{
+		//here we send our corrected video buffer off to OpenGL where it gets pretty much
+		//directly copied to the frame buffer (and converted to the devices color format)
+		glDrawPixels(DS_SCREEN_WIDTH, DS_SCREEN_HEIGHT*2, GL_RGBA, GL_UNSIGNED_SHORT_1_5_5_5_REV, (const GLvoid*)[screen_buffer colorData]);
+	} else
+	{
+		glDrawPixels(DS_SCREEN_HEIGHT*2, DS_SCREEN_WIDTH, GL_RGBA, GL_UNSIGNED_SHORT_1_5_5_5_REV, (const GLvoid*)[screen_buffer colorData]);
+	}
+    
+	glFlush();
+}
+
 - (void)dealloc
 {
-#ifdef HAVE_OPENGL
-	[context release];
-#endif
 	[screen_buffer release];
 
 	[super dealloc];
@@ -125,27 +113,18 @@
 	[screen_buffer retain]; //retain the new screendata since we will need it if we have to redraw before we recieve another update
 
 	//rotate the screen
-#ifdef HAVE_OPENGL
-	if(HORIZONTAL([self boundsRotation]))[screen_buffer rotateTo90];
-#endif
+	if(HORIZONTAL([self boundsRotation]))
+        [screen_buffer rotateTo90];
 
 	//redraw
-#ifdef HAVE_OPENGL
 	[self display];
-#else
-	[self setImage:[screen_buffer image]];
-#endif
 }
 
 - (const ScreenState*)screenState
 {
-#ifdef HAVE_OPENGL
 	ScreenState *temp = [[ScreenState alloc] initWithScreenState:screen_buffer];
 	if(HORIZONTAL([self boundsRotation]))[temp rotateTo0];
 	return temp;
-#else
-	return screen_buffer;
-#endif
 }
 
 - (float)screenWidth
@@ -158,55 +137,12 @@
 	return DS_SCREEN_HEIGHT*2;
 }
 
-#ifdef HAVE_OPENGL
-- (void)viewDidMoveToWindow
-{//if the view moves to another window we need to update the drawable object
-
-	if(!context)return;
-
-	//withdraw from recieving updates on previously window, if any
-	[[NSNotificationCenter defaultCenter] removeObserver:context];
-
-	if([self window] != nil)
-	{
-		[context setView:self];
-
-		//udpate drawable if the window changed
-		[[NSNotificationCenter defaultCenter] addObserver:context selector:@selector(update) name:@"NSWindowDidResizeNotification" object:[self window]];
-
-	} else [context clearDrawable];
-
-}
-#endif
-
-#ifdef HAVE_OPENGL
-- (void)drawRect:(NSRect)bounds
-{
-	if(screen_buffer == nil)return; //simply dont draw anything if we dont have a screen data object allocated
-
-	[context makeCurrentContext];
-
-	if([self boundsRotation] == 0 || [self boundsRotation] == -180)
-	{
-		//here we send our corrected video buffer off to OpenGL where it gets pretty much
-		//directly copied to the frame buffer (and converted to the devices color format)
-		glDrawPixels(DS_SCREEN_WIDTH, DS_SCREEN_HEIGHT*2, GL_RGBA, GL_UNSIGNED_SHORT_1_5_5_5_REV, (const GLvoid*)[screen_buffer colorData]);
-	} else
-	{
-		glDrawPixels(DS_SCREEN_HEIGHT*2, DS_SCREEN_WIDTH, GL_RGBA, GL_UNSIGNED_SHORT_1_5_5_5_REV, (const GLvoid*)[screen_buffer colorData]);
-	}
-
-	glFlush();
-}
-#endif
-
-#ifdef HAVE_OPENGL
 - (void)setFrame:(NSRect)rect
 {
 	[super setFrame:rect];
 
-	[context makeCurrentContext];
-	[context update];
+	[[self openGLContext] makeCurrentContext];
+	[[self openGLContext] update];
 
 	//set the viewport (so the raster pos will be correct)
 	glViewport(0, 0, rect.size.width, rect.size.height);
@@ -231,9 +167,7 @@
 		glPixelZoom(-((float)rect.size.width) / ((float)DS_SCREEN_HEIGHT*2), ((float)rect.size.height) / ((float)DS_SCREEN_WIDTH));
 	}
 }
-#endif
 
-#ifdef HAVE_OPENGL
 - (BOOL)isOpaque
 {
 	if(screen_buffer)
@@ -243,16 +177,14 @@
 	//so this view is completely transparent
 	return NO;
 }
-#endif
 
-#ifdef HAVE_OPENGL
 - (void)setBoundsRotation:(CGFloat)angle
 {
 	float old_angle = [self boundsRotation];
 
 	[super setBoundsRotation:angle];
 
-	[context makeCurrentContext];
+	//[context makeCurrentContext];
 
 	NSSize size = [self frame].size;
 
@@ -281,11 +213,9 @@
 	if(VERTICAL(angle) && HORIZONTAL(old_angle))
 		[screen_buffer rotateTo0];
 }
-#endif
 
 @end
 
-#ifdef HAVE_OPENGL
 @implementation ScreenState (extended)
 - (void)rotateTo90
 {
@@ -319,5 +249,3 @@
 		}
 }
 @end
-#endif
-

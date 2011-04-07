@@ -31,6 +31,8 @@
 #else
 #include <glib.h>
 #endif /* !WXPORT */
+#elif defined(__APPLE__)
+#include <Carbon/Carbon.h>
 #else
 #include <glib.h>
 #endif /* _WINDOWS */
@@ -156,6 +158,11 @@ public:
 		p = pathToModule + lstrlen(pathToModule);
 		while (p >= pathToModule && *p != '\\') p--;
 		if (++p >= pathToModule) *p = 0;
+#elif defined(__APPLE__)
+        FSRef ref;
+        OSType folderType = kApplicationSupportFolderType;        
+        FSFindFolder(kUserDomain, folderType, kCreateFolder, &ref);
+        FSRefMakePath(&ref, (UInt8*)&pathToModule, MAX_PATH);
 #else
 		char *cwd = g_build_filename(g_get_user_config_dir(), "desmume", NULL);
 		g_mkdir_with_parents(cwd, 0755);

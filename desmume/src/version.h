@@ -18,7 +18,7 @@
 */
 
 #include <string>
-#include <types.h>
+#include "Types.h"
 
 u32 EMU_DESMUME_VERSION_NUMERIC();
 const char* EMU_DESMUME_VERSION_STRING();

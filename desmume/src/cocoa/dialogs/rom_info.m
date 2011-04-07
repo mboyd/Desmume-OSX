@@ -18,7 +18,7 @@
 */
 
 #import "rom_info.h"
-#import "../nds_control.h"
+#import "../NintendoDS.h"
 
 bool leopard_or_later = false;
 int HUDWindowMask = 1 << 13; //this is NSHUDWindowMask from Leopard, defined here so we can mantain tiger compile compatability
@@ -37,7 +37,7 @@ NSTextField *rom_ARM9_size;
 NSTextField *rom_ARM7_size;
 NSTextField *rom_data_size;
 
-inline void setUpTextField(NSTextField *text, bool data)
+void setUpTextField(NSTextField *text, bool data)
 {
 	[text setEditable:NO];
 	[text setDrawsBackground:NO];

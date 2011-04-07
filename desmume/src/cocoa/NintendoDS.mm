@@ -17,8 +17,8 @@
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-#import "nds_control.h"
-#import "preferences.h"
+#import "NintendoDS.h"
+#import "DesmumePreferencesController.h"
 #import "screen_state.h"
 
 #ifdef DESMUME_COCOA
@@ -50,7 +50,7 @@ bool timer_based;
 #define DS_MICROSECONDS_PER_FRAME (1.0 / 59.8) * 1000000.0
 
 //accessed from other files
-volatile desmume_BOOL execute = true;
+volatile bool execute = true;
 
 GPU3DInterface *core3DList[] = {
 &gpu3DNull,
@@ -69,7 +69,7 @@ SoundInterface_struct *SNDCoreList[] = {
 NULL
 };
 
-struct NDS_fw_config_data firmware;
+struct NDS_fw_config_data firmware_config;
 
 bool opengl_init()
 {
@@ -152,7 +152,7 @@ bool opengl_init()
 	//this is for compatibility for tiger and earlier
 	timer_based = ([NSObject instancesRespondToSelector:@selector(performSelector:onThread:withObject:waitUntilDone:)]==NO)?true:false;
 
-	//Firmware setup
+	//firmware setup
 #ifdef GDB_STUB
   NDS_Init(arm9_memio, &arm9_ctrl_iface,
            arm7_memio, &arm7_ctrl_iface);
@@ -161,8 +161,8 @@ bool opengl_init()
 #endif
 
 	//use default firmware
-	NDS_FillDefaultFirmwareConfigData(&firmware);
-	NDS_CreateDummyFirmware(&firmware);
+	NDS_FillDefaultFirmwareConfigData(&firmware_config);
+	NDS_CreateDummyFirmware(&firmware_config);
 
   /*
    * Activate the GDB stubs
@@ -356,12 +356,12 @@ bool opengl_init()
 	NSData *string_chars = [player_name dataUsingEncoding:NSUnicodeStringEncoding];
 
 	//copy the bytes
-	firmware.nickname_len = MIN([string_chars length],MAX_FW_NICKNAME_LENGTH);
-	[string_chars getBytes:firmware.nickname length:firmware.nickname_len];
-	firmware.nickname[firmware.nickname_len / 2] = 0;
+	firmware_config.nickname_len = MIN([string_chars length],MAX_FW_NICKNAME_LENGTH);
+	[string_chars getBytes:firmware_config.nickname length:firmware_config.nickname_len];
+	firmware_config.nickname[firmware_config.nickname_len / 2] = 0;
 
 	//set the firmware
-	//NDS_CreateDummyFirmware(&firmware);
+	//NDS_CreateDummyFirmware(&firmware_config);
 }
 
 - (BOOL)loadROM:(NSString*)filename
@@ -653,10 +653,10 @@ bool opengl_init()
 - (void)pressStart
 {
 #ifndef __BIG_ENDIAN__
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] &= 0xFFF7;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] &= 0xFFF7;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] &= 0xFFF7;
 #else
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] &= 0xF7FF;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] &= 0xF7FF;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] &= 0xF7FF;
 #endif
 }
@@ -664,10 +664,10 @@ bool opengl_init()
 - (void)liftStart
 {
 #ifndef __BIG_ENDIAN__
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] |= 0x0008;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] |= 0x0008;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] |= 0x0008;
 #else
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] |= 0x0800;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] |= 0x0800;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] |= 0x0800;
 #endif
 }
@@ -686,10 +686,10 @@ bool opengl_init()
 - (void)pressSelect
 {
 #ifndef __BIG_ENDIAN__
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] &= 0xFFFB;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] &= 0xFFFB;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] &= 0xFFFB;
 #else
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] &= 0xFBFF;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] &= 0xFBFF;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] &= 0xFBFF;
 #endif
 }
@@ -697,10 +697,10 @@ bool opengl_init()
 - (void)liftSelect
 {
 #ifndef __BIG_ENDIAN__
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] |= 0x0004;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] |= 0x0004;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] |= 0x0004;
 #else
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] |= 0x0400;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] |= 0x0400;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] |= 0x0400;
 #endif
 }
@@ -719,10 +719,10 @@ bool opengl_init()
 - (void)pressLeft
 {
 #ifndef __BIG_ENDIAN__
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] &= 0xFFDF;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] &= 0xFFDF;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] &= 0xFFDF;
 #else
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] &= 0xDFFF;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] &= 0xDFFF;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] &= 0xDFFF;
 #endif
 }
@@ -730,10 +730,10 @@ bool opengl_init()
 - (void)liftLeft
 {
 #ifndef __BIG_ENDIAN__
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] |= 0x0020;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] |= 0x0020;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] |= 0x0020;
 #else
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] |= 0x2000;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] |= 0x2000;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] |= 0x2000;
 #endif
 }
@@ -741,9 +741,9 @@ bool opengl_init()
 - (BOOL)left
 {
 #ifndef __BIG_ENDIAN__
-	if((((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] & 0x0020) == 0)
+	if((((u16 *)MMU.ARM9_REG)[0x130>>1] & 0x0020) == 0)
 #else
-	if((((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] & 0x2000) == 0)
+	if((((u16 *)MMU.ARM9_REG)[0x130>>1] & 0x2000) == 0)
 #endif
 		return YES;
 	return NO;
@@ -752,10 +752,10 @@ bool opengl_init()
 - (void)pressRight
 {
 #ifndef __BIG_ENDIAN__
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] &= 0xFFEF;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] &= 0xFFEF;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] &= 0xFFEF;
 #else
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] &= 0xEFFF;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] &= 0xEFFF;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] &= 0xEFFF;
 #endif
 }
@@ -763,10 +763,10 @@ bool opengl_init()
 - (void)liftRight
 {
 #ifndef __BIG_ENDIAN__
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] |= 0x0010;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] |= 0x0010;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] |= 0x0010;
 #else
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] |= 0x1000;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] |= 0x1000;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] |= 0x1000;
 #endif
 }
@@ -774,9 +774,9 @@ bool opengl_init()
 - (BOOL)right
 {
 #ifndef __BIG_ENDIAN__
-	if((((u16*)ARM9Mem.ARM9_REG)[0x130>>1] & 0x0010) == 0)
+	if((((u16*)MMU.ARM9_REG)[0x130>>1] & 0x0010) == 0)
 #else
-	if((((u16*)ARM9Mem.ARM9_REG)[0x130>>1] & 0x1000) == 0)
+	if((((u16*)MMU.ARM9_REG)[0x130>>1] & 0x1000) == 0)
 #endif
 		return YES;
 	return NO;
@@ -785,10 +785,10 @@ bool opengl_init()
 - (void)pressUp
 {
 #ifndef __BIG_ENDIAN__
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] &= 0xFFBF;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] &= 0xFFBF;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] &= 0xFFBF;
 #else
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] &= 0xBFFF;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] &= 0xBFFF;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] &= 0xBFFF;
 #endif
 }
@@ -796,10 +796,10 @@ bool opengl_init()
 - (void)liftUp
 {
 #ifndef __BIG_ENDIAN__
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] |= 0x0040;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] |= 0x0040;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] |= 0x0040;
 #else
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] |= 0x4000;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] |= 0x4000;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] |= 0x4000;
 #endif
 }
@@ -807,9 +807,9 @@ bool opengl_init()
 - (BOOL)up
 {
 #ifndef __BIG_ENDIAN__
-	if((((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] & 0x0040) == 0)
+	if((((u16 *)MMU.ARM9_REG)[0x130>>1] & 0x0040) == 0)
 #else
-	if((((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] & 0x4000) == 0)
+	if((((u16 *)MMU.ARM9_REG)[0x130>>1] & 0x4000) == 0)
 #endif
 		return YES;
 	return NO;
@@ -818,10 +818,10 @@ bool opengl_init()
 - (void)pressDown
 {
 #ifndef __BIG_ENDIAN__
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] &= 0xFF7F;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] &= 0xFF7F;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] &= 0xFF7F;
 #else
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] &= 0x7FFF;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] &= 0x7FFF;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] &= 0x7FFF;
 #endif
 }
@@ -829,10 +829,10 @@ bool opengl_init()
 - (void)liftDown
 {
 #ifndef __BIG_ENDIAN__
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] |= 0x0080;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] |= 0x0080;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] |= 0x0080;
 #else
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] |= 0x8000;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] |= 0x8000;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] |= 0x8000;
 #endif
 }
@@ -840,9 +840,9 @@ bool opengl_init()
 - (BOOL)down
 {
 #ifndef __BIG_ENDIAN__
-	if((((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] & 0x0080) == 0)
+	if((((u16 *)MMU.ARM9_REG)[0x130>>1] & 0x0080) == 0)
 #else
-	if((((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] & 0x8000) == 0)
+	if((((u16 *)MMU.ARM9_REG)[0x130>>1] & 0x8000) == 0)
 #endif
 		return YES;
 	return NO;
@@ -851,10 +851,10 @@ bool opengl_init()
 - (void)pressA
 {
 #ifndef __BIG_ENDIAN__
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] &= 0xFFFE;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] &= 0xFFFE;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] &= 0xFFFE;
 #else
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] &= 0xFEFF;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] &= 0xFEFF;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] &= 0xFEFF;
 #endif
 }
@@ -862,10 +862,10 @@ bool opengl_init()
 - (void)liftA
 {
 #ifndef __BIG_ENDIAN__
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] |= 0x0001;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] |= 0x0001;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] |= 0x0001;
 #else
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] |= 0x0100;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] |= 0x0100;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] |= 0x0100;
 #endif
 }
@@ -873,9 +873,9 @@ bool opengl_init()
 - (BOOL)A
 {
 #ifndef __BIG_ENDIAN__
-	if((((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] & 0x0001) == 0)
+	if((((u16 *)MMU.ARM9_REG)[0x130>>1] & 0x0001) == 0)
 #else
-	if((((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] & 0x0100) == 0)
+	if((((u16 *)MMU.ARM9_REG)[0x130>>1] & 0x0100) == 0)
 #endif
 		return YES;
 	return NO;
@@ -884,10 +884,10 @@ bool opengl_init()
 - (void)pressB
 {
 #ifndef __BIG_ENDIAN__
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] &= 0xFFFD;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] &= 0xFFFD;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] &= 0xFFFD;
 #else
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] &= 0xFDFF;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] &= 0xFDFF;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] &= 0xFDFF;
 #endif
 }
@@ -895,10 +895,10 @@ bool opengl_init()
 - (void)liftB
 {
 #ifndef __BIG_ENDIAN__
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] |= 0x0002;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] |= 0x0002;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] |= 0x0002;
 #else
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] |= 0x0200;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] |= 0x0200;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] |= 0x0200;
 #endif
 }
@@ -906,9 +906,9 @@ bool opengl_init()
 - (BOOL)B
 {
 #ifndef __BIG_ENDIAN__
-	if((((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] & 0x0002) == 0)
+	if((((u16 *)MMU.ARM9_REG)[0x130>>1] & 0x0002) == 0)
 #else
-	if((((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] & 0x0200) == 0)
+	if((((u16 *)MMU.ARM9_REG)[0x130>>1] & 0x0200) == 0)
 #endif
 		return YES;
 	return NO;
@@ -979,10 +979,10 @@ bool opengl_init()
 - (void)pressL
 {
 #ifndef __BIG_ENDIAN__
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] &= 0xFDFF;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] &= 0xFDFF;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] &= 0xFDFF;
 #else
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] &= 0xFFFD;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] &= 0xFFFD;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] &= 0xFFFD;
 #endif
 }
@@ -990,10 +990,10 @@ bool opengl_init()
 - (void)liftL
 {
 #ifndef __BIG_ENDIAN__
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] |= 0x0200;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] |= 0x0200;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] |= 0x0200;
 #else
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] |= 0x0002;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] |= 0x0002;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] |= 0x0002;
 #endif
 }
@@ -1001,9 +1001,9 @@ bool opengl_init()
 - (BOOL)L
 {
 #ifndef __BIG_ENDIAN__
-	if((((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] & 0x0200) == 0)
+	if((((u16 *)MMU.ARM9_REG)[0x130>>1] & 0x0200) == 0)
 #else
-	if((((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] & 0x0002) == 0)
+	if((((u16 *)MMU.ARM9_REG)[0x130>>1] & 0x0002) == 0)
 #endif
 		return YES;
 	return NO;
@@ -1012,10 +1012,10 @@ bool opengl_init()
 - (void)pressR
 {
 #ifndef __BIG_ENDIAN__
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] &= 0xFEFF;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] &= 0xFEFF;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] &= 0xFEFF;
 #else
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] &= 0xFFFE;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] &= 0xFFFE;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] &= 0xFFFE;
 #endif
 }
@@ -1023,10 +1023,10 @@ bool opengl_init()
 - (void)liftR
 {
 #ifndef __BIG_ENDIAN__
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] |= 0x0100;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] |= 0x0100;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] |= 0x0100;
 #else
-	((u16 *)ARM9Mem.ARM9_REG)[0x130>>1] |= 0x0001;
+	((u16 *)MMU.ARM9_REG)[0x130>>1] |= 0x0001;
 	((u16 *)MMU.ARM7_REG)[0x130>>1] |= 0x0001;
 #endif
 }
@@ -1135,7 +1135,7 @@ bool opengl_init()
 
 - (void)toggleTopBackground0
 {
-	if(SubScreen.gpu->dispBG[0])
+	if(SubScreen.gpu->LayersEnable[0])
 		GPU_remove(SubScreen.gpu, 0);
 	else
 		GPU_addBack(SubScreen.gpu, 0);
@@ -1143,12 +1143,12 @@ bool opengl_init()
 
 - (BOOL)showingTopBackground0
 {
-	return SubScreen.gpu->dispBG[0];
+	return SubScreen.gpu->LayersEnable[0];
 }
 
 - (void)toggleTopBackground1
 {
-	if(SubScreen.gpu->dispBG[1])
+	if(SubScreen.gpu->LayersEnable[1])
 		GPU_remove(SubScreen.gpu, 1);
 	else
 		GPU_addBack(SubScreen.gpu, 1);
@@ -1156,12 +1156,12 @@ bool opengl_init()
 
 - (BOOL)showingTopBackground1
 {
-	return SubScreen.gpu->dispBG[1];
+	return SubScreen.gpu->LayersEnable[1];
 }
 
 - (void)toggleTopBackground2
 {
-	if(SubScreen.gpu->dispBG[2])
+	if(SubScreen.gpu->LayersEnable[2])
 		GPU_remove(SubScreen.gpu, 2);
 	else
 		GPU_addBack(SubScreen.gpu, 2);
@@ -1169,12 +1169,12 @@ bool opengl_init()
 
 - (BOOL)showingTopBackground2
 {
-	return SubScreen.gpu->dispBG[2];
+	return SubScreen.gpu->LayersEnable[2];
 }
 
 - (void)toggleTopBackground3
 {
-	if(SubScreen.gpu->dispBG[3])
+	if(SubScreen.gpu->LayersEnable[3])
 		GPU_remove(SubScreen.gpu, 3);
 	else
 		GPU_addBack(SubScreen.gpu, 3);
@@ -1182,12 +1182,12 @@ bool opengl_init()
 
 - (BOOL)showingTopBackground3
 {
-	return SubScreen.gpu->dispBG[3];
+	return SubScreen.gpu->LayersEnable[3];
 }
 
 - (void)toggleSubBackground0
 {
-	if(MainScreen.gpu->dispBG[0])
+	if(MainScreen.gpu->LayersEnable[0])
 		GPU_remove(MainScreen.gpu, 0);
 	else
 		GPU_addBack(MainScreen.gpu, 0);
@@ -1195,12 +1195,12 @@ bool opengl_init()
 
 - (BOOL)showingSubBackground0
 {
-	return MainScreen.gpu->dispBG[0];
+	return MainScreen.gpu->LayersEnable[0];
 }
 
 - (void)toggleSubBackground1
 {
-	if(MainScreen.gpu->dispBG[1])
+	if(MainScreen.gpu->LayersEnable[1])
 		GPU_remove(MainScreen.gpu, 1);
 	else
 		GPU_addBack(MainScreen.gpu, 1);
@@ -1208,12 +1208,12 @@ bool opengl_init()
 
 - (BOOL)showingSubBackground1
 {
-	return MainScreen.gpu->dispBG[1];
+	return MainScreen.gpu->LayersEnable[1];
 }
 
 - (void)toggleSubBackground2
 {
-	if(MainScreen.gpu->dispBG[2])
+	if(MainScreen.gpu->LayersEnable[2])
 		GPU_remove(MainScreen.gpu, 2);
 	else
 		GPU_addBack(MainScreen.gpu, 2);
@@ -1221,12 +1221,12 @@ bool opengl_init()
 
 - (BOOL)showingSubBackground2
 {
-	return MainScreen.gpu->dispBG[2];
+	return MainScreen.gpu->LayersEnable[2];
 }
 
 - (void)toggleSubBackground3
 {
-	if(MainScreen.gpu->dispBG[3])
+	if(MainScreen.gpu->LayersEnable[3])
 		GPU_remove(MainScreen.gpu, 3);
 	else
 		GPU_addBack(MainScreen.gpu, 3);
@@ -1234,7 +1234,7 @@ bool opengl_init()
 
 - (BOOL)showingSubBackground3
 {
-	return MainScreen.gpu->dispBG[3];
+	return MainScreen.gpu->LayersEnable[3];
 }
 
 - (BOOL)hasSound

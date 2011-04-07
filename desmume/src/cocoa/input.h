@@ -24,19 +24,18 @@
  any events not handled by a the window get sent here.
  */
 
-@class VideoOutputWindow;
+@class NintendoDS;
+@class NDSController;
 
 @interface InputHandler : NSResponder
 {
-@private
-	VideoOutputWindow *my_ds;
+    @private
+	NDSController *my_controller;
+    NintendoDS *my_ds;
 }
-//preferences
-+ (NSView*)createPreferencesView:(float)width;
-+ (NSDictionary*)appDefaults;
 
 //creation/deletion
-- (id)initWithWindow:(VideoOutputWindow*)nds;
+- (id)initWithController:(NDSController*)nds;
 - (void)dealloc;
 
 //keyboard input

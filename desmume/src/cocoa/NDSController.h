@@ -19,11 +19,14 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import "nds_control.h"
+#import "NintendoDS.h"
 
-@class VideoOutputView;
+#define DS_SCREEN_HEIGHT_COMBINED (192*2) /*height of the two screens*/
+#define DS_SCREEN_X_RATIO (256.0 / (192.0 * 2.0))
+#define DS_SCREEN_Y_RATIO ((192.0 * 2.0) / 256.0)
+
+@class NDSView;
 @class InputHandler;
-//this is used internally by VideoOutputWindow
 
 // Backup media type array length
 #define MAX_SAVE_TYPE 7
@@ -32,13 +35,18 @@
 //This interface is to create and manaage the window
 //that displays DS video output and takes keyboard/mouse input
 //do not instanciate more than one of these
-@interface VideoOutputWindow : NintendoDS
+@interface NDSController : NSObject <NSWindowDelegate>
 {
+    NintendoDS *nds;
+    
+    IBOutlet NSWindow *window;
+	IBOutlet NDSView *nds_view;
+    
 	@private
-	NSWindow *window;
-	NSWindowController *controller;
-	VideoOutputView *video_output_view;
-	NSTextField *status_view;
+    
+    NSTextField *status_view;
+    
+    NSWindowController *controller;
 	NSString *status_bar_text;
 	InputHandler *input;
 
@@ -47,14 +55,18 @@
 }
 
 //initialization
-- (id)init;
-- (void)dealloc;
+- (void)awakeFromNib;
 
-//overloaded from NintendoDS class
+- (NintendoDS*) ds;
+- (NDSView*) view;
+
 - (BOOL)loadROM:(NSString*)filename;
-- (void)execute;
-- (void)pause;
-- (void)reset;
+- (BOOL)ROMLoaded;
+
+- (IBAction)execute:(id)sender;
+- (IBAction)pause:(id)sender;
+- (IBAction)reset:(id)sender;
+
 - (void)setFrameSkip:(int)frameskip;
 - (void)setSaveType:(int)savetype;
 - (void)closeROM;
@@ -69,46 +81,17 @@
 - (BOOL)saveStateAs;
 - (BOOL)loadStateFrom;
 
-//toggles between allowing tiny sizes and only being as small as DS
-- (void)toggleMinSize;
-
-//this method will contrain the size as well
-//this is screen size not window size
-- (void)resizeScreen:(NSSize)size;
-
-//like resizeScreen but does a size in relation to DS pixels
-- (void)resizeScreen1x;
-- (void)resizeScreen2x;
-- (void)resizeScreen3x;
-- (void)resizeScreen4x;
-
 //converts window coords to DS coords (returns -1, -1 if invalid)
 - (NSPoint)windowPointToDSCoords:(NSPoint)location;
 
-//
-- (void)toggleConstrainProportions;
-- (void)toggleStatusBar;
-
-//rotation
-- (void)setRotation:(float)rotation;
-- (void)setRotation0;
-- (void)setRotation90;
-- (void)setRotation180;
-- (void)setRotation270;
-- (float)rotation;
+- (IBAction)toggleConstrainProportions:(id)sender;
 
 //layers
-- (void)toggleTopBackground0;
-- (void)toggleTopBackground1;
-- (void)toggleTopBackground2;
-- (void)toggleTopBackground3;
-- (void)toggleSubBackground0;
-- (void)toggleSubBackground1;
-- (void)toggleSubBackground2;
-- (void)toggleSubBackground3;
+- (IBAction)toggleTopBackground:(id)sender;
+- (IBAction)toggleSubBackground:(id)sender;
 
 //screenshots
-- (void)saveScreenshot;
+- (IBAction)saveScreenshot: (id)sender;
 
 //delegate
 - (void)windowDidBecomeMain:(NSNotification*)notification;

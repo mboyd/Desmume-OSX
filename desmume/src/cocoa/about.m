@@ -107,7 +107,7 @@ NSTextField *about_website;
 
 	[about_window setTitle:NSLocalizedString([sender title], nil)];
 
-	AboutDelegate *delegate = [[AboutDelegate alloc] init];
+	id delegate = [[AboutDelegate alloc] init];
 	[about_window setDelegate:delegate];
 
 	NSBundle *main_bundle = [NSBundle mainBundle];
@@ -247,7 +247,7 @@ NSTextField *about_website;
 
 		rect.size = [[scroll_view contentView] frame].size;
 		text_view = [[NSTextView alloc] initWithFrame:rect];
-		[text_view insertText:[NSString stringWithContentsOfFile:datapath]];
+		[text_view insertText:[NSString stringWithContentsOfFile:datapath usedEncoding:NULL error:NULL]];
 		[text_view setDrawsBackground:NO];
 		[text_view setEditable:NO];
 		[text_view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
@@ -275,7 +275,7 @@ NSTextField *about_website;
 
 		rect.size = [[scroll_view contentView] frame].size;
 		text_view = [[NSTextView alloc] initWithFrame:rect];
-		[text_view insertText:[NSString stringWithContentsOfFile:datapath]];
+		[text_view insertText:[NSString stringWithContentsOfFile:datapath usedEncoding:NULL error:NULL]];
 		[text_view setDrawsBackground:NO];
 		[text_view setEditable:NO];
 		[text_view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
@@ -303,7 +303,7 @@ NSTextField *about_website;
 
 		rect.size = [[scroll_view contentView] frame].size;
 		text_view = [[NSTextView alloc] initWithFrame:rect];
-		[text_view insertText:[NSString stringWithContentsOfFile:datapath]];
+		[text_view insertText:[NSString stringWithContentsOfFile:datapath usedEncoding:NULL error:NULL]];
 		[text_view setDrawsBackground:NO];
 		[text_view setEditable:NO];
 		[text_view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
@@ -331,7 +331,7 @@ NSTextField *about_website;
 
 		rect.size = [[scroll_view contentView] frame].size;
 		text_view = [[NSTextView alloc] initWithFrame:rect];
-		[text_view insertText:[NSString stringWithContentsOfFile:datapath]];
+		[text_view insertText:[NSString stringWithContentsOfFile:datapath usedEncoding:NULL error:NULL]];
 		[text_view setDrawsBackground:NO];
 		[text_view setEditable:NO];
 		[text_view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
