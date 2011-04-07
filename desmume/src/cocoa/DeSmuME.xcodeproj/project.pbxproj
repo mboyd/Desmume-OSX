@@ -10,7 +10,6 @@
 		1EFD51790F892B1A00B029BB /* DeSmuME.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7277B62E0D9D9AEA00D283BD /* DeSmuME.icns */; };
 		1EFD517A0F892B1A00B029BB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F4B55090F53924500C8B514 /* Localizable.strings */; };
 		1EFD517D0F892B1A00B029BB /* cocoa_util.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BEC5A0D9D55DB00ED561B /* cocoa_util.m */; };
-		1EFD517E0F892B1A00B029BB /* input.mm in Sources */ = {isa = PBXBuildFile; fileRef = 729BEC5E0D9D55DB00ED561B /* input.mm */; };
 		1EFD517F0F892B1A00B029BB /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 729BEC600D9D55DB00ED561B /* main.mm */; };
 		1EFD51800F892B1A00B029BB /* NDSController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 729BEC620D9D55DB00ED561B /* NDSController.mm */; };
 		1EFD51810F892B1A00B029BB /* NintendoDS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 729BEC640D9D55DB00ED561B /* NintendoDS.mm */; };
@@ -25,17 +24,11 @@
 		1EFD51A70F892B1A00B029BB /* crc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD29410F080DBD004021C9 /* crc.cpp */; };
 		1EFD51A80F892B1A00B029BB /* decrypt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD29430F080DBD004021C9 /* decrypt.cpp */; };
 		1EFD51A90F892B1A00B029BB /* header.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD29450F080DBD004021C9 /* header.cpp */; };
-		1EFD51B00F892B1A00B029BB /* gbagame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FB372770F1CBAB200F75A43 /* gbagame.cpp */; };
-		1EFD51B10F892B1A00B029BB /* none.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FB372780F1CBAB200F75A43 /* none.cpp */; };
-		1EFD51B20F892B1A00B029BB /* rumblepak.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FB372790F1CBAB200F75A43 /* rumblepak.cpp */; };
 		1EFD51B50F892B1A00B029BB /* gdbstub.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1EFD50B50F891CA400B029BB /* gdbstub.cpp */; };
 		1EFD51B70F892B1A00B029BB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		1EFD51B80F892B1A00B029BB /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 729BECE60D9D57F600ED561B /* OpenGL.framework */; };
 		1EFD51B90F892B1A00B029BB /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 729BECEF0D9D581900ED561B /* AudioUnit.framework */; };
 		1F4B550A0F53924500C8B514 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F4B55090F53924500C8B514 /* Localizable.strings */; };
-		1FB3727B0F1CBAB200F75A43 /* gbagame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FB372770F1CBAB200F75A43 /* gbagame.cpp */; };
-		1FB3727C0F1CBAB200F75A43 /* none.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FB372780F1CBAB200F75A43 /* none.cpp */; };
-		1FB3727D0F1CBAB200F75A43 /* rumblepak.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FB372790F1CBAB200F75A43 /* rumblepak.cpp */; };
 		1FDD294F0F080DBD004021C9 /* crc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD29410F080DBD004021C9 /* crc.cpp */; };
 		1FDD29500F080DBD004021C9 /* decrypt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD29430F080DBD004021C9 /* decrypt.cpp */; };
 		1FDD29510F080DBD004021C9 /* header.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD29450F080DBD004021C9 /* header.cpp */; };
@@ -65,8 +58,6 @@
 		2213493F132CBF6400E191EF /* Disassembler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 221348D5132CBF6400E191EF /* Disassembler.cpp */; };
 		22134940132CBF6400E191EF /* driver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 221348D7132CBF6400E191EF /* driver.cpp */; };
 		22134941132CBF6400E191EF /* driver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 221348D7132CBF6400E191EF /* driver.cpp */; };
-		22134942132CBF6400E191EF /* emufat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 221348DA132CBF6400E191EF /* emufat.cpp */; };
-		22134943132CBF6400E191EF /* emufat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 221348DA132CBF6400E191EF /* emufat.cpp */; };
 		22134944132CBF6400E191EF /* emufile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 221348DC132CBF6400E191EF /* emufile.cpp */; };
 		22134945132CBF6400E191EF /* emufile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 221348DC132CBF6400E191EF /* emufile.cpp */; };
 		22134946132CBF6400E191EF /* FIFO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 221348DF132CBF6400E191EF /* FIFO.cpp */; };
@@ -118,12 +109,6 @@
 		22134984132CBF6400E191EF /* wifi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22134920132CBF6400E191EF /* wifi.cpp */; };
 		22134985132CBF6400E191EF /* wifi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22134920132CBF6400E191EF /* wifi.cpp */; };
 		226544F613319E66004CAD6B /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 226544F513319E66004CAD6B /* Preferences.xib */; };
-		22671EBD132D73A000792805 /* expMemory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22671EB7132D73A000792805 /* expMemory.cpp */; };
-		22671EBE132D73A000792805 /* expMemory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22671EB7132D73A000792805 /* expMemory.cpp */; };
-		22671EBF132D73A000792805 /* guitarGrip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22671EB8132D73A000792805 /* guitarGrip.cpp */; };
-		22671EC0132D73A000792805 /* guitarGrip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22671EB8132D73A000792805 /* guitarGrip.cpp */; };
-		22671EC1132D73A000792805 /* piano.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22671EB9132D73A000792805 /* piano.cpp */; };
-		22671EC2132D73A000792805 /* piano.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22671EB9132D73A000792805 /* piano.cpp */; };
 		22671EC3132D73A000792805 /* slot1_none.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22671EBA132D73A000792805 /* slot1_none.cpp */; };
 		22671EC4132D73A000792805 /* slot1_none.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22671EBA132D73A000792805 /* slot1_none.cpp */; };
 		22671EC5132D73A000792805 /* slot1_r4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22671EBB132D73A000792805 /* slot1_r4.cpp */; };
@@ -168,17 +153,36 @@
 		22671F25132D763700792805 /* task.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22671EF9132D763700792805 /* task.cpp */; };
 		22671F26132D763700792805 /* xstring.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22671EFC132D763700792805 /* xstring.cpp */; };
 		22671F27132D763700792805 /* xstring.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22671EFC132D763700792805 /* xstring.cpp */; };
-		22671F29132D764400792805 /* compactFlash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22671F28132D764400792805 /* compactFlash.cpp */; };
-		22671F2A132D764400792805 /* compactFlash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22671F28132D764400792805 /* compactFlash.cpp */; };
 		22671F2E132D7B8B00792805 /* metaspu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22671F2C132D7B8B00792805 /* metaspu.cpp */; };
 		22671F2F132D7B8B00792805 /* metaspu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22671F2C132D7B8B00792805 /* metaspu.cpp */; };
+		22A5DD7D134E642D00518C07 /* slot2_expMemory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22A5DD75134E642D00518C07 /* slot2_expMemory.cpp */; };
+		22A5DD7E134E642D00518C07 /* slot2_expMemory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22A5DD75134E642D00518C07 /* slot2_expMemory.cpp */; };
+		22A5DD7F134E642D00518C07 /* slot2_gbagame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22A5DD76134E642D00518C07 /* slot2_gbagame.cpp */; };
+		22A5DD80134E642D00518C07 /* slot2_gbagame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22A5DD76134E642D00518C07 /* slot2_gbagame.cpp */; };
+		22A5DD81134E642D00518C07 /* slot2_guitarGrip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22A5DD77134E642D00518C07 /* slot2_guitarGrip.cpp */; };
+		22A5DD82134E642D00518C07 /* slot2_guitarGrip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22A5DD77134E642D00518C07 /* slot2_guitarGrip.cpp */; };
+		22A5DD83134E642D00518C07 /* slot2_mpcf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22A5DD78134E642D00518C07 /* slot2_mpcf.cpp */; };
+		22A5DD84134E642D00518C07 /* slot2_mpcf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22A5DD78134E642D00518C07 /* slot2_mpcf.cpp */; };
+		22A5DD85134E642D00518C07 /* slot2_none.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22A5DD79134E642D00518C07 /* slot2_none.cpp */; };
+		22A5DD86134E642D00518C07 /* slot2_none.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22A5DD79134E642D00518C07 /* slot2_none.cpp */; };
+		22A5DD87134E642D00518C07 /* slot2_paddle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22A5DD7A134E642D00518C07 /* slot2_paddle.cpp */; };
+		22A5DD88134E642D00518C07 /* slot2_paddle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22A5DD7A134E642D00518C07 /* slot2_paddle.cpp */; };
+		22A5DD89134E642D00518C07 /* slot2_piano.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22A5DD7B134E642D00518C07 /* slot2_piano.cpp */; };
+		22A5DD8A134E642D00518C07 /* slot2_piano.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22A5DD7B134E642D00518C07 /* slot2_piano.cpp */; };
+		22A5DD8B134E642D00518C07 /* slot2_rumblepak.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22A5DD7C134E642D00518C07 /* slot2_rumblepak.cpp */; };
+		22A5DD8C134E642D00518C07 /* slot2_rumblepak.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22A5DD7C134E642D00518C07 /* slot2_rumblepak.cpp */; };
+		22A5DD90134E646500518C07 /* emufat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22A5DD8E134E646500518C07 /* emufat.cpp */; };
+		22A5DD91134E646500518C07 /* emufat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22A5DD8E134E646500518C07 /* emufat.cpp */; };
+		22A5DD94134E64AD00518C07 /* vfat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22A5DD92134E64AD00518C07 /* vfat.cpp */; };
+		22A5DD95134E64AD00518C07 /* vfat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22A5DD92134E64AD00518C07 /* vfat.cpp */; };
+		22A5DD97134E64E900518C07 /* input.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22A5DD96134E64E900518C07 /* input.mm */; };
+		22A5DD98134E64E900518C07 /* input.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22A5DD96134E64E900518C07 /* input.mm */; };
 		721F43E50EA2A23F0037FB33 /* sndOSX.mm in Sources */ = {isa = PBXBuildFile; fileRef = 721F43E40EA2A23F0037FB33 /* sndOSX.mm */; };
 		721F44230EA2BB6E0037FB33 /* rom_info.m in Sources */ = {isa = PBXBuildFile; fileRef = 721F44220EA2BB6E0037FB33 /* rom_info.m */; };
 		7233955A0E596E9100999693 /* speed_limit_selection_window.mm in Sources */ = {isa = PBXBuildFile; fileRef = 723395590E596E9100999693 /* speed_limit_selection_window.mm */; };
 		7277B62F0D9D9AEA00D283BD /* DeSmuME.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7277B62E0D9D9AEA00D283BD /* DeSmuME.icns */; };
 		7277B8EB0D9F25F700D283BD /* about.m in Sources */ = {isa = PBXBuildFile; fileRef = 7277B8EA0D9F25F700D283BD /* about.m */; };
 		729BEC6F0D9D55DB00ED561B /* cocoa_util.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BEC5A0D9D55DB00ED561B /* cocoa_util.m */; };
-		729BEC710D9D55DB00ED561B /* input.mm in Sources */ = {isa = PBXBuildFile; fileRef = 729BEC5E0D9D55DB00ED561B /* input.mm */; };
 		729BEC730D9D55DB00ED561B /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 729BEC600D9D55DB00ED561B /* main.mm */; };
 		729BEC740D9D55DB00ED561B /* NDSController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 729BEC620D9D55DB00ED561B /* NDSController.mm */; };
 		729BEC750D9D55DB00ED561B /* NintendoDS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 729BEC640D9D55DB00ED561B /* NintendoDS.mm */; };
@@ -200,9 +204,6 @@
 		1F4B550D0F53928000C8B514 /* Italian */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Italian; path = translations/Italian.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1F4B550E0F53928400C8B514 /* Japanese */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Japanese; path = translations/Japanese.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1F4B550F0F53928700C8B514 /* French */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = French; path = translations/French.lproj/Localizable.strings; sourceTree = "<group>"; };
-		1FB372770F1CBAB200F75A43 /* gbagame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gbagame.cpp; sourceTree = "<group>"; };
-		1FB372780F1CBAB200F75A43 /* none.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = none.cpp; sourceTree = "<group>"; };
-		1FB372790F1CBAB200F75A43 /* rumblepak.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rumblepak.cpp; sourceTree = "<group>"; };
 		1FDD29410F080DBD004021C9 /* crc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = crc.cpp; sourceTree = "<group>"; };
 		1FDD29420F080DBD004021C9 /* crc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crc.h; sourceTree = "<group>"; };
 		1FDD29430F080DBD004021C9 /* decrypt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = decrypt.cpp; sourceTree = "<group>"; };
@@ -234,12 +235,8 @@
 		221348D6132CBF6400E191EF /* Disassembler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Disassembler.h; path = ../Disassembler.h; sourceTree = "<group>"; };
 		221348D7132CBF6400E191EF /* driver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = driver.cpp; path = ../driver.cpp; sourceTree = "<group>"; };
 		221348D8132CBF6400E191EF /* driver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = driver.h; path = ../driver.h; sourceTree = "<group>"; };
-		221348D9132CBF6400E191EF /* emufat_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = emufat_types.h; path = ../emufat_types.h; sourceTree = "<group>"; };
-		221348DA132CBF6400E191EF /* emufat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = emufat.cpp; path = ../emufat.cpp; sourceTree = "<group>"; };
-		221348DB132CBF6400E191EF /* emufat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = emufat.h; path = ../emufat.h; sourceTree = "<group>"; };
 		221348DC132CBF6400E191EF /* emufile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = emufile.cpp; path = ../emufile.cpp; sourceTree = "<group>"; };
 		221348DD132CBF6400E191EF /* emufile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = emufile.h; path = ../emufile.h; sourceTree = "<group>"; };
-		221348DE132CBF6400E191EF /* fat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fat.h; path = ../fat.h; sourceTree = "<group>"; };
 		221348DF132CBF6400E191EF /* FIFO.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FIFO.cpp; path = ../FIFO.cpp; sourceTree = "<group>"; };
 		221348E0132CBF6400E191EF /* FIFO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FIFO.h; path = ../FIFO.h; sourceTree = "<group>"; };
 		221348E1132CBF6400E191EF /* firmware.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = firmware.cpp; path = ../firmware.cpp; sourceTree = "<group>"; };
@@ -299,9 +296,6 @@
 		22134920132CBF6400E191EF /* wifi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = wifi.cpp; path = ../wifi.cpp; sourceTree = "<group>"; };
 		22134921132CBF6400E191EF /* wifi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = wifi.h; path = ../wifi.h; sourceTree = "<group>"; };
 		226544F513319E66004CAD6B /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
-		22671EB7132D73A000792805 /* expMemory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = expMemory.cpp; sourceTree = "<group>"; };
-		22671EB8132D73A000792805 /* guitarGrip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = guitarGrip.cpp; sourceTree = "<group>"; };
-		22671EB9132D73A000792805 /* piano.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = piano.cpp; sourceTree = "<group>"; };
 		22671EBA132D73A000792805 /* slot1_none.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = slot1_none.cpp; sourceTree = "<group>"; };
 		22671EBB132D73A000792805 /* slot1_r4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = slot1_r4.cpp; sourceTree = "<group>"; };
 		22671EBC132D73A000792805 /* slot1_retail.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = slot1_retail.cpp; sourceTree = "<group>"; };
@@ -353,9 +347,22 @@
 		22671EFB132D763700792805 /* valuearray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = valuearray.h; sourceTree = "<group>"; };
 		22671EFC132D763700792805 /* xstring.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = xstring.cpp; sourceTree = "<group>"; };
 		22671EFD132D763700792805 /* xstring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xstring.h; sourceTree = "<group>"; };
-		22671F28132D764400792805 /* compactFlash.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = compactFlash.cpp; sourceTree = "<group>"; };
 		22671F2C132D7B8B00792805 /* metaspu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = metaspu.cpp; sourceTree = "<group>"; };
 		22671F2D132D7B8B00792805 /* metaspu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = metaspu.h; sourceTree = "<group>"; };
+		22A5DD75134E642D00518C07 /* slot2_expMemory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = slot2_expMemory.cpp; sourceTree = "<group>"; };
+		22A5DD76134E642D00518C07 /* slot2_gbagame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = slot2_gbagame.cpp; sourceTree = "<group>"; };
+		22A5DD77134E642D00518C07 /* slot2_guitarGrip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = slot2_guitarGrip.cpp; sourceTree = "<group>"; };
+		22A5DD78134E642D00518C07 /* slot2_mpcf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = slot2_mpcf.cpp; sourceTree = "<group>"; };
+		22A5DD79134E642D00518C07 /* slot2_none.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = slot2_none.cpp; sourceTree = "<group>"; };
+		22A5DD7A134E642D00518C07 /* slot2_paddle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = slot2_paddle.cpp; sourceTree = "<group>"; };
+		22A5DD7B134E642D00518C07 /* slot2_piano.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = slot2_piano.cpp; sourceTree = "<group>"; };
+		22A5DD7C134E642D00518C07 /* slot2_rumblepak.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = slot2_rumblepak.cpp; sourceTree = "<group>"; };
+		22A5DD8D134E646500518C07 /* emufat_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = emufat_types.h; sourceTree = "<group>"; };
+		22A5DD8E134E646500518C07 /* emufat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = emufat.cpp; sourceTree = "<group>"; };
+		22A5DD8F134E646500518C07 /* emufat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = emufat.h; sourceTree = "<group>"; };
+		22A5DD92134E64AD00518C07 /* vfat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vfat.cpp; sourceTree = "<group>"; };
+		22A5DD93134E64AD00518C07 /* vfat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vfat.h; sourceTree = "<group>"; };
+		22A5DD96134E64E900518C07 /* input.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = input.mm; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		721F43E40EA2A23F0037FB33 /* sndOSX.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = sndOSX.mm; sourceTree = "<group>"; };
@@ -368,13 +375,12 @@
 		729BEC5A0D9D55DB00ED561B /* cocoa_util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cocoa_util.m; sourceTree = SOURCE_ROOT; };
 		729BEC5C0D9D55DB00ED561B /* globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = globals.h; sourceTree = SOURCE_ROOT; };
 		729BEC5D0D9D55DB00ED561B /* input.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = input.h; sourceTree = SOURCE_ROOT; };
-		729BEC5E0D9D55DB00ED561B /* input.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = input.mm; sourceTree = "<group>"; };
 		729BEC600D9D55DB00ED561B /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		729BEC610D9D55DB00ED561B /* NDSController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDSController.h; sourceTree = SOURCE_ROOT; };
 		729BEC620D9D55DB00ED561B /* NDSController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NDSController.mm; sourceTree = "<group>"; };
 		729BEC630D9D55DB00ED561B /* NintendoDS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NintendoDS.h; sourceTree = SOURCE_ROOT; };
 		729BEC640D9D55DB00ED561B /* NintendoDS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NintendoDS.mm; sourceTree = "<group>"; };
-		729BEC650D9D55DB00ED561B /* DesmumePreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = DesmumePreferencesController.h; sourceTree = SOURCE_ROOT; };
+		729BEC650D9D55DB00ED561B /* DesmumePreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesmumePreferencesController.h; sourceTree = SOURCE_ROOT; };
 		729BEC660D9D55DB00ED561B /* DesmumePreferencesController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DesmumePreferencesController.mm; sourceTree = "<group>"; };
 		729BEC690D9D55DB00ED561B /* screenshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = screenshot.h; sourceTree = SOURCE_ROOT; };
 		729BEC6A0D9D55DB00ED561B /* screenshot.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = screenshot.mm; sourceTree = "<group>"; };
@@ -426,7 +432,7 @@
 				729BEC600D9D55DB00ED561B /* main.mm */,
 				729BEC5A0D9D55DB00ED561B /* cocoa_util.m */,
 				729BEC5D0D9D55DB00ED561B /* input.h */,
-				729BEC5E0D9D55DB00ED561B /* input.mm */,
+				22A5DD96134E64E900518C07 /* input.mm */,
 				729BEC610D9D55DB00ED561B /* NDSController.h */,
 				729BEC620D9D55DB00ED561B /* NDSController.mm */,
 				729BEC630D9D55DB00ED561B /* NintendoDS.h */,
@@ -479,16 +485,17 @@
 		1FB372750F1CBAB200F75A43 /* addons */ = {
 			isa = PBXGroup;
 			children = (
-				22671F28132D764400792805 /* compactFlash.cpp */,
-				22671EB7132D73A000792805 /* expMemory.cpp */,
-				22671EB8132D73A000792805 /* guitarGrip.cpp */,
-				22671EB9132D73A000792805 /* piano.cpp */,
 				22671EBA132D73A000792805 /* slot1_none.cpp */,
 				22671EBB132D73A000792805 /* slot1_r4.cpp */,
 				22671EBC132D73A000792805 /* slot1_retail.cpp */,
-				1FB372770F1CBAB200F75A43 /* gbagame.cpp */,
-				1FB372780F1CBAB200F75A43 /* none.cpp */,
-				1FB372790F1CBAB200F75A43 /* rumblepak.cpp */,
+				22A5DD75134E642D00518C07 /* slot2_expMemory.cpp */,
+				22A5DD76134E642D00518C07 /* slot2_gbagame.cpp */,
+				22A5DD77134E642D00518C07 /* slot2_guitarGrip.cpp */,
+				22A5DD78134E642D00518C07 /* slot2_mpcf.cpp */,
+				22A5DD79134E642D00518C07 /* slot2_none.cpp */,
+				22A5DD7A134E642D00518C07 /* slot2_paddle.cpp */,
+				22A5DD7B134E642D00518C07 /* slot2_piano.cpp */,
+				22A5DD7C134E642D00518C07 /* slot2_rumblepak.cpp */,
 			);
 			name = addons;
 			path = ../addons;
@@ -527,6 +534,9 @@
 				22671ED0132D763700792805 /* datetime.h */,
 				22671ED1132D763700792805 /* decrypt */,
 				22671ED8132D763700792805 /* dlditool.cpp */,
+				22A5DD8D134E646500518C07 /* emufat_types.h */,
+				22A5DD8E134E646500518C07 /* emufat.cpp */,
+				22A5DD8F134E646500518C07 /* emufat.h */,
 				22671ED9132D763700792805 /* guid.cpp */,
 				22671EDA132D763700792805 /* guid.h */,
 				22671EDB132D763700792805 /* libfat */,
@@ -535,6 +545,8 @@
 				22671EF9132D763700792805 /* task.cpp */,
 				22671EFA132D763700792805 /* task.h */,
 				22671EFB132D763700792805 /* valuearray.h */,
+				22A5DD92134E64AD00518C07 /* vfat.cpp */,
+				22A5DD93134E64AD00518C07 /* vfat.h */,
 				22671EFC132D763700792805 /* xstring.cpp */,
 				22671EFD132D763700792805 /* xstring.h */,
 			);
@@ -634,12 +646,8 @@
 				221348D6132CBF6400E191EF /* Disassembler.h */,
 				221348D7132CBF6400E191EF /* driver.cpp */,
 				221348D8132CBF6400E191EF /* driver.h */,
-				221348D9132CBF6400E191EF /* emufat_types.h */,
-				221348DA132CBF6400E191EF /* emufat.cpp */,
-				221348DB132CBF6400E191EF /* emufat.h */,
 				221348DC132CBF6400E191EF /* emufile.cpp */,
 				221348DD132CBF6400E191EF /* emufile.h */,
-				221348DE132CBF6400E191EF /* fat.h */,
 				221348DF132CBF6400E191EF /* FIFO.cpp */,
 				221348E0132CBF6400E191EF /* FIFO.h */,
 				221348E1132CBF6400E191EF /* firmware.cpp */,
@@ -873,7 +881,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1EFD517D0F892B1A00B029BB /* cocoa_util.m in Sources */,
-				1EFD517E0F892B1A00B029BB /* input.mm in Sources */,
 				1EFD517F0F892B1A00B029BB /* main.mm in Sources */,
 				1EFD51800F892B1A00B029BB /* NDSController.mm in Sources */,
 				1EFD51810F892B1A00B029BB /* NintendoDS.mm in Sources */,
@@ -888,9 +895,6 @@
 				1EFD51A70F892B1A00B029BB /* crc.cpp in Sources */,
 				1EFD51A80F892B1A00B029BB /* decrypt.cpp in Sources */,
 				1EFD51A90F892B1A00B029BB /* header.cpp in Sources */,
-				1EFD51B00F892B1A00B029BB /* gbagame.cpp in Sources */,
-				1EFD51B10F892B1A00B029BB /* none.cpp in Sources */,
-				1EFD51B20F892B1A00B029BB /* rumblepak.cpp in Sources */,
 				1EFD51B50F892B1A00B029BB /* gdbstub.cpp in Sources */,
 				22134923132CBF6400E191EF /* addons.cpp in Sources */,
 				22134929132CBF6400E191EF /* arm_instructions.cpp in Sources */,
@@ -902,7 +906,6 @@
 				22134939132CBF6400E191EF /* debug.cpp in Sources */,
 				2213493F132CBF6400E191EF /* Disassembler.cpp in Sources */,
 				22134941132CBF6400E191EF /* driver.cpp in Sources */,
-				22134943132CBF6400E191EF /* emufat.cpp in Sources */,
 				22134945132CBF6400E191EF /* emufile.cpp in Sources */,
 				22134947132CBF6400E191EF /* FIFO.cpp in Sources */,
 				22134949132CBF6400E191EF /* firmware.cpp in Sources */,
@@ -928,9 +931,6 @@
 				2213497F132CBF6400E191EF /* thumb_instructions.cpp in Sources */,
 				22134983132CBF6400E191EF /* version.cpp in Sources */,
 				22134985132CBF6400E191EF /* wifi.cpp in Sources */,
-				22671EBE132D73A000792805 /* expMemory.cpp in Sources */,
-				22671EC0132D73A000792805 /* guitarGrip.cpp in Sources */,
-				22671EC2132D73A000792805 /* piano.cpp in Sources */,
 				22671EC4132D73A000792805 /* slot1_none.cpp in Sources */,
 				22671EC6132D73A000792805 /* slot1_r4.cpp in Sources */,
 				22671EC8132D73A000792805 /* slot1_retail.cpp in Sources */,
@@ -953,10 +953,20 @@
 				22671F23132D763700792805 /* md5.cpp in Sources */,
 				22671F25132D763700792805 /* task.cpp in Sources */,
 				22671F27132D763700792805 /* xstring.cpp in Sources */,
-				22671F2A132D764400792805 /* compactFlash.cpp in Sources */,
 				22671F2F132D7B8B00792805 /* metaspu.cpp in Sources */,
 				22130BB7132EC7C5002DDC42 /* DemumeAppDelegate.mm in Sources */,
 				22130BBF132ED0E1002DDC42 /* gdb_stub.c in Sources */,
+				22A5DD7E134E642D00518C07 /* slot2_expMemory.cpp in Sources */,
+				22A5DD80134E642D00518C07 /* slot2_gbagame.cpp in Sources */,
+				22A5DD82134E642D00518C07 /* slot2_guitarGrip.cpp in Sources */,
+				22A5DD84134E642D00518C07 /* slot2_mpcf.cpp in Sources */,
+				22A5DD86134E642D00518C07 /* slot2_none.cpp in Sources */,
+				22A5DD88134E642D00518C07 /* slot2_paddle.cpp in Sources */,
+				22A5DD8A134E642D00518C07 /* slot2_piano.cpp in Sources */,
+				22A5DD8C134E642D00518C07 /* slot2_rumblepak.cpp in Sources */,
+				22A5DD91134E646500518C07 /* emufat.cpp in Sources */,
+				22A5DD95134E64AD00518C07 /* vfat.cpp in Sources */,
+				22A5DD98134E64E900518C07 /* input.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -965,7 +975,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				729BEC6F0D9D55DB00ED561B /* cocoa_util.m in Sources */,
-				729BEC710D9D55DB00ED561B /* input.mm in Sources */,
 				729BEC730D9D55DB00ED561B /* main.mm in Sources */,
 				729BEC740D9D55DB00ED561B /* NDSController.mm in Sources */,
 				729BEC750D9D55DB00ED561B /* NintendoDS.mm in Sources */,
@@ -980,9 +989,6 @@
 				1FDD294F0F080DBD004021C9 /* crc.cpp in Sources */,
 				1FDD29500F080DBD004021C9 /* decrypt.cpp in Sources */,
 				1FDD29510F080DBD004021C9 /* header.cpp in Sources */,
-				1FB3727B0F1CBAB200F75A43 /* gbagame.cpp in Sources */,
-				1FB3727C0F1CBAB200F75A43 /* none.cpp in Sources */,
-				1FB3727D0F1CBAB200F75A43 /* rumblepak.cpp in Sources */,
 				22134922132CBF6400E191EF /* addons.cpp in Sources */,
 				22134928132CBF6400E191EF /* arm_instructions.cpp in Sources */,
 				2213492A132CBF6400E191EF /* armcpu.cpp in Sources */,
@@ -993,7 +999,6 @@
 				22134938132CBF6400E191EF /* debug.cpp in Sources */,
 				2213493E132CBF6400E191EF /* Disassembler.cpp in Sources */,
 				22134940132CBF6400E191EF /* driver.cpp in Sources */,
-				22134942132CBF6400E191EF /* emufat.cpp in Sources */,
 				22134944132CBF6400E191EF /* emufile.cpp in Sources */,
 				22134946132CBF6400E191EF /* FIFO.cpp in Sources */,
 				22134948132CBF6400E191EF /* firmware.cpp in Sources */,
@@ -1019,9 +1024,6 @@
 				2213497E132CBF6400E191EF /* thumb_instructions.cpp in Sources */,
 				22134982132CBF6400E191EF /* version.cpp in Sources */,
 				22134984132CBF6400E191EF /* wifi.cpp in Sources */,
-				22671EBD132D73A000792805 /* expMemory.cpp in Sources */,
-				22671EBF132D73A000792805 /* guitarGrip.cpp in Sources */,
-				22671EC1132D73A000792805 /* piano.cpp in Sources */,
 				22671EC3132D73A000792805 /* slot1_none.cpp in Sources */,
 				22671EC5132D73A000792805 /* slot1_r4.cpp in Sources */,
 				22671EC7132D73A000792805 /* slot1_retail.cpp in Sources */,
@@ -1044,10 +1046,20 @@
 				22671F22132D763700792805 /* md5.cpp in Sources */,
 				22671F24132D763700792805 /* task.cpp in Sources */,
 				22671F26132D763700792805 /* xstring.cpp in Sources */,
-				22671F29132D764400792805 /* compactFlash.cpp in Sources */,
 				22671F2E132D7B8B00792805 /* metaspu.cpp in Sources */,
 				22130BB6132EC7C5002DDC42 /* DemumeAppDelegate.mm in Sources */,
 				22130BBE132ED0E1002DDC42 /* gdb_stub.c in Sources */,
+				22A5DD7D134E642D00518C07 /* slot2_expMemory.cpp in Sources */,
+				22A5DD7F134E642D00518C07 /* slot2_gbagame.cpp in Sources */,
+				22A5DD81134E642D00518C07 /* slot2_guitarGrip.cpp in Sources */,
+				22A5DD83134E642D00518C07 /* slot2_mpcf.cpp in Sources */,
+				22A5DD85134E642D00518C07 /* slot2_none.cpp in Sources */,
+				22A5DD87134E642D00518C07 /* slot2_paddle.cpp in Sources */,
+				22A5DD89134E642D00518C07 /* slot2_piano.cpp in Sources */,
+				22A5DD8B134E642D00518C07 /* slot2_rumblepak.cpp in Sources */,
+				22A5DD90134E646500518C07 /* emufat.cpp in Sources */,
+				22A5DD94134E64AD00518C07 /* vfat.cpp in Sources */,
+				22A5DD97134E64E900518C07 /* input.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
